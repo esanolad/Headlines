@@ -1,0 +1,31 @@
+<div class='row'>
+    <!-- Sidebar -->
+    <div class='row blog-main'>
+             
+        <ul class="blog-post">
+            {{countryCode}}
+            <li ng-show="!posts.totalResults">No News yet</li>
+            <li ng-repeat='post in posts.articles track by $index'>
+
+                <h2 class="blog-post-title">{{post.title}}</h2>
+                <p class="blog-post-meta">{{post.publishedAt}} by <a href="{{post.url}}"  target="_blank" >{{post.source.name}}</a></p>
+                <div class="row">
+               <div class="col-sm-8"><img class="img-thumbnail, img-responsive" src = "{{post.urlToImage}}"></div> 
+                    <div class="col-sm-4"><h3><a href="{{post.url}}" target="_blank">{{post.description}} </a></h3></div>
+                </div>
+                <hr>
+                
+                
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- /Sidebar -->
+
+    <!-- Page Content -->
+    <div class='col-sm-8 full-height'>
+        <h2>{{activePost.title}}</h2>
+        <div btf-markdown='activePost.body'></div>
+    </div>
+</div>

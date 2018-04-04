@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app='mean-blog.admin'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News API</title>
+  <!--<meta name="description" content="ghost clone javascript blog node.js angular.js"> -->
+  <meta name="author" content="esanolad">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='/admin/css/main.css'>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <div ng-include='"/admin/templates/nav.html"'></div>
+ 
+  <div ui-view class='container' id='main-content'></div>
+	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.js"></script>
+   <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
+ 
+  <script src='/admin/js/lib/markdown.js'></script>
+  <script src='/admin/js/app.js'></script>
+  <script src='/admin/js/controllers.js'></script>
+  <script src='/common/modules/posts.js'></script>
+  <script src='/admin/js/searchbox.js'></script>
+</body>
+</html>

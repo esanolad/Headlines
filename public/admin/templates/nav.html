@@ -1,0 +1,145 @@
+<!-- Top navigation -->
+<!--
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller='NavCtrl'>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">NEWS API</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active: isActive('allPosts') }"><a ui-sref="View Top Headlines">All posts</a></li>
+        <li ng-class="{ active: isActive('addPost') }"><a ui-sref="addPost">New Post</a></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-inverse navbar-fixed-top"  ng-controller='NavCtrl'>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand">News API</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a ui-sref="post({countryCode:'NG'})">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">View Top Headlines<span class="caret"></span></a>
+          <ul class="dropdown-menu scrollable-menu">
+            <li ><a ui-sref="post({countryCode:'AR'})">Argentina</a></li>
+            <li ><a ui-sref="post({countryCode:'AU'})">Australia</a></li>
+            <li ><a ui-sref="post({countryCode:'AT'})">Austria</a></li>
+            <li ><a ui-sref="post({countryCode:'BE'})">Belgium</a></li>
+            <li ><a ui-sref="post({countryCode:'BR'})">Brazil</a></li>
+            <li ><a ui-sref="post({countryCode:'BG'})">Bulgaria</a></li>
+            <li ><a ui-sref="post({countryCode:'CA'})">Canada</a></li>
+            <li ><a ui-sref="post({countryCode:'CN'})">China</a></li>
+            <li ><a ui-sref="post({countryCode:'CO'})">Columbia</a></li>
+            <li ><a ui-sref="post({countryCode:'CU'})">Cuba</a></li>
+            <li ><a ui-sref="post({countryCode:'CZ'})">Czech Republic</a></li>
+            <li ><a ui-sref="post({countryCode:'EG'})">Egypt</a></li>
+            <li ><a ui-sref="post({countryCode:'FR'})">France</a></li>
+            <li ><a ui-sref="post({countryCode:'DE'})">Germany</a></li>
+            <li ><a ui-sref="post({countryCode:'GR'})">Greece</a></li>
+            <li ><a ui-sref="post({countryCode:'HK'})">Hong Kong</a></li>
+            <li ><a ui-sref="post({countryCode:'HU'})">Hungary</a></li>
+            <li ><a ui-sref="post({countryCode:'IN'})">India</a></li>
+            <li ><a ui-sref="post({countryCode:'ID'})">Indonesia</a></li>
+            <li ><a ui-sref="post({countryCode:'IE'})">Ireland</a></li>
+            <li ><a ui-sref="post({countryCode:'IL'})">Israel</a></li>
+            <li ><a ui-sref="post({countryCode:'IT'})">Italy</a></li>
+            <li ><a ui-sref="post({countryCode:'JP'})">Japan</a></li>
+            <li ><a ui-sref="post({countryCode:'LV'})">Latvia</a></li>
+            <li ><a ui-sref="post({countryCode:'LT'})">Lithuania</a></li>
+            <li ><a ui-sref="post({countryCode:'MY'})">Malysia</a></li>
+            <li ><a ui-sref="post({countryCode:'MX'})">Mexico</a></li>
+            <li ><a ui-sref="post({countryCode:'MA'})">Morocco</a></li>
+            <li ><a ui-sref="post({countryCode:'NL'})">Netherlands</a></li>
+            <li ><a ui-sref="post({countryCode:'NZ'})">New Zealand</a></li>
+            <li ><a ui-sref="post({countryCode:'NG'})">Nigeria</a></li>
+            <li ><a ui-sref="post({countryCode:'NO'})">Norway</a></li>
+            <li ><a ui-sref="post({countryCode:'PH'})">Philippines</a></li>
+            <li ><a ui-sref="post({countryCode:'PL'})">Poland</a></li>
+            <li ><a ui-sref="post({countryCode:'PT'})">Portugal</a></li>
+            <li ><a ui-sref="post({countryCode:'RO'})">Romania</a></li>
+            <li ><a ui-sref="post({countryCode:'RU'})">Rusia</a></li>
+            <li ><a ui-sref="post({countryCode:'SA'})">Saudi Arabia</a></li>
+            <li ><a ui-sref="post({countryCode:'RS'})">Serbia</a></li>
+            <li ><a ui-sref="post({countryCode:'SG'})">Singapore</a></li>
+            <li ><a ui-sref="post({countryCode:'SK'})">Slovakia</a></li>
+            <li ><a ui-sref="post({countryCode:'SI'})">Slovenia</a></li>
+            <li ><a ui-sref="post({countryCode:'ZA'})">South Africa</a></li>
+            <li ><a ui-sref="post({countryCode:'KR'})">South Korea</a></li>
+            <li ><a ui-sref="post({countryCode:'SE'})">Sweden</a></li>
+            <li ><a ui-sref="post({countryCode:'CH'})">Switzerland</a></li>
+            <li ><a ui-sref="post({countryCode:'TW'})">Taiwan</a></li>
+            <li ><a ui-sref="post({countryCode:'TH'})">Thailand</a></li>
+            <li ><a ui-sref="post({countryCode:'TR'})">Turkey</a></li>
+            <li ><a ui-sref="post({countryCode:'AE'})">UAE</a></li>
+            <li ><a ui-sref="post({countryCode:'UA'})">Ukraine</a></li>
+            <li ><a ui-sref="post({countryCode:'GB'})">United Kingdome</a></li>
+            <li ><a ui-sref="post({countryCode:'US'})">United States</a></li>
+            <li ><a ui-sref="post({countryCode:'VE'})">Venuzuela</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sources<span class="caret"></span></a>
+         <ul class="dropdown-menu scrollable-menu" id="myDropdown">
+          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <li ><a ui-sref="sources({source:'bbc-news'})">BBC News</a></li>
+            <li ><a ui-sref="sources({source:'reuters'})">Reuters</a></li>
+            <li ><a ui-sref="sources({source:'independent'})">Independent</a></li>
+            <li ><a ui-sref="sources({source:'al-jazeera-english'})">Al Jazeera English</a></li>
+            <li ><a ui-sref="sources({source:'news24'})">News 24</a></li>
+            <li ><a ui-sref="sources({source:'new-york-magazine'})">New York Magazine</a></li>
+            <li ><a ui-sref="sources({source:'cnn'})">CNN</a></li>
+            <li ><a ui-sref="sources({source:'focus'})">Focus</a></li>
+            <li ><a ui-sref="sources({source:'abc-news'})">ABC News</a></li>
+            <li ><a ui-sref="sources({source:'rt'})">RT</a></li>
+            <li ><a ui-sref="sources({source:'the-huffington-post'})">The Huffington Post</a></li>
+            <li ><a ui-sref="sources({source:'the-guardian-uk'})">The Guardian (UK)</a></li>
+            <li ><a ui-sref="sources({source:'hacker-news'})">Hacker News</a></li>
+            <li ><a ui-sref="sources({source:'techcrunch-cn'})">TechCrunch (CN)</a></li>
+            <li ><a ui-sref="sources({source:'techradar'})">TechRadar</a></li>
+            <li ><a ui-sref="sources({source:'google-news'})">Google News</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      
+      
+    </div>
+  </div>
+</nav>
+<!-- /Top navigation -->
+<!--
+<header class="blog-header py-3">
+  <div class="row flex-nowrap justify-content-between align-items-center">
+    <div class="col-4 pt-1">
+      <a class="text-muted" href="#">Subscribe</a>
+    </div>
+    <div class="col-4 text-center">
+      <a class="blog-header-logo text-dark" href="#">Latest News Around the Globe</a>
+    </div>
+    <div class="col-4 d-flex justify-content-end align-items-center">
+      <a class="text-muted" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+      </a>
+      <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+    </div>
+  </div>
+</header> 
+-->
