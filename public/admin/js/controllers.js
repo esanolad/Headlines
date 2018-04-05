@@ -1,4 +1,13 @@
-
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/admin/sw.js').then(function(registration){
+      console.log('Registration Successful with scope', registration.scope);
+ 
+    }, function(err){
+      console.log('Registration Failed', err);
+    });
+  });
+}
 adminApp.controller('NavCtrl', function($scope, $state){
 	$scope.active = $state;
 	$scope.isActive = function(viewLocation){

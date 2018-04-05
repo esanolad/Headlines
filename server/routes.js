@@ -26,7 +26,9 @@ module.exports = function(app, passport){
 	router.get('/admin/sources/:source', function(req, res){
 		res.render('admin/dashboard', {sources: req.params.source});
 	}); 
-
+	router.get('/admin/js/sw/index.js', function(req, res){
+		res.render('admin/js/sw/index.js');
+	}); 
 	app.use(function(req, res, next){
 		res.status(404);
 
