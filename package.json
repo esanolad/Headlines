@@ -12,7 +12,6 @@
     "express",
     "angularjs",
     "angular"
-    
   ],
   "author": "esanolad",
   "license": "MIT",
@@ -22,12 +21,8 @@
     "cors": "^2.7.1",
     "ejs": "^2.3.2",
     "express": "^4.12.4",
-    //"express-session": "^1.11.3",
+    "idb": "^2.1.1",
     "method-override": "^2.3.3",
-    //"mongoose": "^4.0.6",
-    "newsapi": "^2.2.1",
-   // "passport": "^0.2.2",
-    //"passport-local": "^1.0.0",
-    //"passport-local-mongoose": "^1.0.1"
+    "newsapi": "^2.2.1"
   }
 }

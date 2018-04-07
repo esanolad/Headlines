@@ -20,7 +20,7 @@ module.exports = function(apiRouter){
 				country:req.params.countryCode,
 				//language: 'en'
 			}).then(response => {
-			  	console.log(response);
+			  	//console.log(response);
 			  	res.json(response);	
 		}, err =>{
 			console.log(err);
