@@ -14,14 +14,17 @@ module.exports = function(apiRouter){
 			  	res.json(response);
 		}); 
 	});
-
+	
 	apiRouter.get('/posts/:countryCode', function(req, res){
 		newsapi.v2.topHeadlines({
 				country:req.params.countryCode,
 				//language: 'en'
 			}).then(response => {
-			  	//console.log(response);
-			  	res.json(response);
+			  	console.log(response);
+			  	res.json(response);	
+		}, err =>{
+			console.log(err);
+			res.sendStatus(404);
 		}); 
 	});
 	apiRouter.get('/sources/:source', function(req, res){
@@ -32,6 +35,9 @@ module.exports = function(apiRouter){
 			}).then(response => {
 			  	//console.log(response);
 			  	res.json(response);
+		}, err=> {
+			console.log(err);
+			res.sendStatus(404);
 		}); 
 	});
 };

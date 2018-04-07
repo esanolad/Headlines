@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\public\\admin",
+    "\\public\\admin\\css",
+    "\\public\\admin\\js",
+    "\\public\\admin\\templates",
+    "\\public\\common\\modules",
+    "\\views",
+    "\\views\\admin"
+  ],
+  "SelectedNode": "\\public\\admin",
+  "PreviewInSolutionExplorer": false
+}
