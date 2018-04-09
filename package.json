@@ -1,5 +1,5 @@
 {
-  "name": "ghost-clone",
+  "name": "headlines",
   "version": "0.0.1",
   "description": "News API",
   "main": "server.js",
@@ -24,5 +24,14 @@
     "idb": "^2.1.1",
     "method-override": "^2.3.3",
     "newsapi": "^2.2.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esanolad/Headlines.git"
+  },
+  "bugs": {
+    "url": "https://github.com/esanolad/Headlines/issues"
+  },
+  "homepage": "https://github.com/esanolad/Headlines#readme"
 }

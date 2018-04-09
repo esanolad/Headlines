@@ -3,13 +3,14 @@
     "",
     "\\public",
     "\\public\\admin",
-    "\\public\\admin\\css",
     "\\public\\admin\\js",
+    "\\public\\admin\\js\\lib",
     "\\public\\admin\\templates",
+    "\\public\\common",
     "\\public\\common\\modules",
-    "\\views",
-    "\\views\\admin"
+    "\\server",
+    "\\server\\api"
   ],
-  "SelectedNode": "\\public\\admin",
+  "SelectedNode": "\\public\\admin\\templates\\allPosts.html",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,5 @@
 var CACHE_NAME = "newsAPI_cache_v2";
+var idb = require('idb');
 var urlsToCache=[
 	'/admin/css/main.css',
     '/admin/templates/allPosts.html',
@@ -24,6 +25,13 @@ self.addEventListener('install', function (event){
 		})
 	);
 });
+function openDatabase() {
+    if (!navigator.serviceWorker) {
+        return Promise.resolve();
+    }
+    return idb.open('newsAPI', 2, function (upgradeDb) {
+    });
+}
 self.addEventListener('fetch', function (event) {
     //console.log(event.request);
     
@@ -39,7 +47,16 @@ self.addEventListener('fetch', function (event) {
 
             return fetch(fetchRequest).then(function (response) {
                 if (response.status == 404) {
-                    console.log('handle this');
+                    var idb = require('idb');
+                    var dbPromise = openDatabase();
+                    if (!dbPromise) return response;
+                    dbPromise.then(function (db) {
+                        var tx = db.transaction('newsAPI')
+                            .objectStore('newsAPI').index('by-source');
+                        return tx.getAll().then(function (messages) {
+                            console.log(messages);
+                        });
+                    });
                     return response;
                 }
                 var responseToCache = response.clone();
@@ -47,7 +64,7 @@ self.addEventListener('fetch', function (event) {
                 caches.open(CACHE_NAME).then(function (cache) {
                     //cache.put(event.request, responseToCache);
                 })
-                console.log(response);
+                //console.log(response);
                 return response;
             });
         }) 

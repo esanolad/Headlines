@@ -4,19 +4,21 @@
              
         <ul class="blog-post">
             {{countryCode}}
-            <li ng-show="!posts.totalResults">No News yet</li>
-            <li ng-repeat='post in posts.articles track by $index'>
+           <li ng-show="!posts">No News yet</li>
+            <li ng-repeat='post in posts track by $index'>
 
-                <h2 class="blog-post-title">{{post.title}}</h2>
-                <p class="blog-post-meta">{{post.publishedAt}} by <a href="{{post.url}}"  target="_blank" >{{post.source.name}}</a></p>
-                <div class="row">
-                   <!--<div class="col-sm-8"><img class="img-thumbnail, img-responsive" src = "{{post.urlToImage}}"></div>  -->
-                   <div class="col-sm-4"><h3><a href="{{post.url}}" target="_blank">{{post.description}} </a></h3></div>
-                </div>
-                <hr>
-                
-                
-            </li>
+                <a href="{{post.url}}" target="_blank">
+                    <h2 class="blog-post-title">{{post.title}}</h2>
+                </a>
+                    <p class="blog-post-meta">{{post.publishedAt}} by <a href="{{post.url}}" target="_blank">{{post.source.name}}</a></p>
+                    <div class="row">
+                        <div class="col-sm-12"><img class="img-thumbnail, img-responsive" src="{{post.urlToImage}}"></div>
+                        <!--  <div class="col-sm-4"><h3><a href="{{post.url}}" target="_blank">{{post.description}} </a></h3></div> -->
+                    </div>
+                    <hr>
+
+
+</li>
         </ul>
     </div>
 
