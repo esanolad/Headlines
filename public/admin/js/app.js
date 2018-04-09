@@ -10,20 +10,6 @@ adminApp.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
-	/*
-		.state('allPosts', {
-			url: '/',
-			templateUrl: '/admin/templates/allPosts.html',
-			resolve: {
-				postList: function(Posts){
-					return Posts.all().then(function(data){
-						
-						return data;
-					});
-				}
-			},
-			controller: 'AllPostsCtrl'
-		}) */
 		.state('post', {
 			url: '/dashboard/:countryCode',
 			templateUrl: '/admin/templates/allPosts.html',

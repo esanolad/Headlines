@@ -365,7 +365,7 @@
                 
 
                 return fetch(fetchRequest).then(function (response) {
-                    if (fetchRequest.url.startsWith('http://localhost:3000/api/')) {
+                    if (fetchRequest.url.startsWith('http://localhost:3000/api/') && response.status==404) {
                         console.log("handling");
                         return idbMs().then(function (tt) {
                             return new Response(JSON.stringify(tt));

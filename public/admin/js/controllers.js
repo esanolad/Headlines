@@ -366,32 +366,6 @@
                 return cursor.continue().then(deleteRest);
             });
         })
-
-        //testtttttttttttttt
-        /*
-        var idb = require('idb');
-        //var dbPromise = openDatabase();
-        var dbPromise = idb.open('newsAPI', 2).then(function (upgradeDb) {
-            switch (upgradeDb.oldVersion) {
-                case 0:
-                    var store = upgradeDb.createObjectStore('newsAPI', {
-                        keyPath: 'publishedAt'
-                    });
-                    store.createIndex('by-source', 'source.name');
-                case 1:
-                   var store = upgradeDb.transaction.objectStore('newsAPI');
-            }
-           console.log(upgradeDb);
-        });
-       
-        dbPromise.then(function (db) {
-            var tx = db.transaction('newsAPI')
-                .objectStore('newsAPI').index('by-source');
-            console.log(tx[2]);
-            return tx.getAll().then(function (messages) {
-                console.log(messages);
-            });
-        });   */
 	    $scope.posts = postList;
 	    $scope.activePost = false;
 	    $scope.setActive = function(post){
