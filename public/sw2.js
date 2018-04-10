@@ -352,44 +352,71 @@
             });
         });
     }
+    function favorite() {
+        var idb = require('idb');
+        var dbPromise = idb.open('newsAPI', 2);
+        return dbPromise.then(function (db) {
+            var tx = db.transaction('favorite').objectStore('favorite');
+            return tx.getAll().then(function(message){
+                //console.log(message);
+                return message;
+            });
+        });
+    }
+
     self.addEventListener('fetch', function (event) {
         //console.log(event.request);
-    
+        //console.log(event.request.url);
         event.respondWith(
             //new Response("Hello world")
         
             caches.match(event.request).then(function (response) {
+                //serve from cache
                 if (response) {
                     //console.log('fetching from cache: ', response.url);
                     return response;
                 }
+
+                //check for favorites
+                
                 var fetchRequest = event.request.clone();
                 
+                
+                //fetch the request and check response for offline status
 
                 return fetch(fetchRequest).then(function (response) {
                     //check if client is requesting for sources
+                    
+                    //console.log(fetchRequest.url);
+
                     if (fetchRequest.url.startsWith('http://localhost:3000/api/sources') && response.status == 404) {
-                        //alert("serving offline");
-                        //console.log(fetchRequest.url);
                         var url = fetchRequest.url;
                         var source = url.slice(url.lastIndexOf('/') + 1);
                         return idbMs(source).then(function (news) {
                             return new Response(JSON.stringify(news));
-                            //console.log(kk);
-
+                        
                         });
                     } 
                     if (fetchRequest.url.startsWith('http://localhost:3000/api/posts') && response.status == 404) {
-                        //alert("serving offline");
+                        
                         console.log(fetchRequest.url);
-                        //var url = fetchRequest.url;
-                        //var source = url.slice(url.lastIndexOf('/') + 1);
+                        
                         return idbMs().then(function (news) {
                             return new Response(JSON.stringify(news));
-                            //console.log(kk);
-
+                      
                         });
                     } 
+
+                    if (fetchRequest.url=='http://localhost:3000/api/favourite/'){
+
+                    //fetch data from favorite store
+                    //console.log('handle');
+                      return favorite().then(function (news) {
+                          return new Response(JSON.stringify(news));
+                      });
+
+                    } 
+
                     var responseToCache = response.clone();
 
                     caches.open(CACHE_NAME).then(function (cache) {

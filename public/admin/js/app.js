@@ -34,11 +34,18 @@ adminApp.config(function($stateProvider, $urlRouterProvider){
 			},
 			controller: 'AllPostsCtrl'
 		})
-		
-		.state('addPost', {
-			url: '/addPost',
-			templateUrl: '/admin/templates/addPost.html',
-			controller: 'AddPostCtrl'
+		.state('favourites', {
+			url: '/sources',
+			templateUrl: '/admin/templates/allPosts.html',
+			resolve: {
+				postList: function(Posts){
+					return Posts.favourite().then(function(data){
+						return data;
+					});
+				}
+			},
+			controller: 'AllPostsCtrl'
 		});
+		
 });
 

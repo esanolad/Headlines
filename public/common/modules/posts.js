@@ -21,6 +21,12 @@ postsModule.service('Posts', function($http){
 				return postList.data;
 			});
 		},
+		favourite: function(){
+			//var link= '/api/favourite' + source;
+			return $http.get('api/favourite/').then(function(postList){
+				return postList.data;
+			});
+		},
 		
 	};
 });

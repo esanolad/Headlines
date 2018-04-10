@@ -10,7 +10,9 @@
                 <a href="{{post.url}}" target="_blank">
                     <h2 class="blog-post-title">{{post.title}}</h2>
                 </a>
-                    <p class="blog-post-meta">{{post.publishedAt | date:'MM/dd/yyyy h:mma'}} by <a href="{{post.url}}" target="_blank">{{post.source.name}}</a></p>
+                    <p class="blog-post-meta">{{post.publishedAt | date:'MM/dd/yyyy h:mma'}} by <a href="{{post.url}}" target="_blank">{{post.source.name}}</a> 
+                        <button ng-click="favourite(post)">favorite</button>
+                    </p>
                     <div class="row">
                         <div class="col-sm-12"><img class="img-thumbnail, img-responsive" ng-src="{{post.urlToImage}}"></div>
                        

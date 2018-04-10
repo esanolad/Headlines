@@ -14,7 +14,9 @@ module.exports = function(apiRouter){
 			  	res.json(response);
 		}); 
 	});
-	
+	apiRouter.get('/favourite/', function(req, res){
+		res.sendStatus(404);
+	});
 	apiRouter.get('/posts/:countryCode', function(req, res){
 		newsapi.v2.topHeadlines({
 				country:req.params.countryCode,

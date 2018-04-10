@@ -15,6 +15,10 @@ module.exports = function(app, passport){
     router.get('/', function (req, res) {
         res.render('dashboard');
     });
+    router.get('/favorites', function (req, res) {
+        res.render('dashboard');
+    });
+    
     /*
     router.get('/admin/dashboard/:countryCode', function (req, res) {
         res.render('admin/dashboard', { countryCode: req.params.countryCode });

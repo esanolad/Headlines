@@ -323,6 +323,9 @@
             var store = upgradeDb.createObjectStore('newsAPI', {
                 keyPath: 'publishedAt'
             });
+            var favorite = upgradeDb.createObjectStore('favorite', {
+                keyPath: 'publishedAt'
+            });
             store.createIndex('by-source', 'source.id');
             //store.createIndex('by-country', )
         });
@@ -369,13 +372,24 @@
                 return cursor.continue().then(deleteRest);
             }); 
         })
-	    $scope.posts = postList;
-	    $scope.activePost = false;
-	    $scope.setActive = function(post){
-		    $scope.activePost = post;
-	    }
-    });
+        $scope.posts = postList;
+        $scope.favourite = function (post) {
+			//console.log(post);
+			dbPromise.then(function (db) {
+				if (!db) return;
+				var tx = db.transaction('favorite', 'readwrite');
+				var store = tx.objectStore('favorite');
+				store.put(post);
 
+            }); 
+        
+        }
+	    //$scope.activePost = false;
+	    //$scope.setActive = function(post){
+		//$scope.activePost = post;
+	    //}
+    });
+    /*
     adminApp.controller('AddPostCtrl', function($scope, Posts){
 	    $scope.post = {};
 	    $scope.addPost = function(newPost){
@@ -383,5 +397,5 @@
 			    console.log(res);
 		    });
 	    };
-    });
+    }); */
 },{"idb":1}]},{},[2]);
