@@ -336,7 +336,9 @@
         }, function(err){
           console.log('Registration Failed', err);
         });
-      });
+        });
+      var refreshing;
+      
     }
     adminApp.controller('NavCtrl', function($scope, $state){
 	    $scope.active = $state;

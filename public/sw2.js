@@ -365,12 +365,14 @@
                 
 
                 return fetch(fetchRequest).then(function (response) {
-                    if (fetchRequest.url.startsWith('http://localhost:3000/api/') && response.status==404) {
+                    if (fetchRequest.url.startsWith('http://localhost:3000/api/') && response.status == 404) {
+                        //alert("serving offline");
                         var url = fetchRequest.url;
                         var source = url.slice(url.lastIndexOf('/') + 1);
                         return idbMs(source).then(function (news) {
                             return new Response(JSON.stringify(news));
                             //console.log(kk);
+
                         });
                     } 
                     var responseToCache = response.clone();

@@ -17,9 +17,11 @@ module.exports = function(app, passport){
 	});
 	
 	router.get('/admin/dashboard', function(req, res){
-		res.render('admin/dashboard'); //, {user: req.user}
+		res.render('admin/dashboard'); 
 	});
-
+    router.get('/', function (req, res) {
+        res.render('dashboard');
+    });
 	router.get('/admin/sources', function(req, res){
 		res.render('admin/dashboard', {sources: req.params.source});
 	});

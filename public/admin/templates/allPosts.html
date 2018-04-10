@@ -10,9 +10,10 @@
                 <a href="{{post.url}}" target="_blank">
                     <h2 class="blog-post-title">{{post.title}}</h2>
                 </a>
-                    <p class="blog-post-meta">{{post.publishedAt}} by <a href="{{post.url}}" target="_blank">{{post.source.name}}</a></p>
+                    <p class="blog-post-meta">{{post.publishedAt | date:'MM/dd/yyyy h:mma'}} by <a href="{{post.url}}" target="_blank">{{post.source.name}}</a></p>
                     <div class="row">
-                        <div class="col-sm-12"><img class="img-thumbnail, img-responsive" src="{{post.urlToImage}}"></div>
+                        <div class="col-sm-12"><img class="img-thumbnail, img-responsive" ng-src="{{post.urlToImage}}"></div>
+                       
                         <!--  <div class="col-sm-4"><h3><a href="{{post.url}}" target="_blank">{{post.description}} </a></h3></div> -->
                     </div>
                     <hr>
