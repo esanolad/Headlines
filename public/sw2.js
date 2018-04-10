@@ -339,12 +339,12 @@
 		    })
 	    );
     });
-    function idbMs() {
+    function idbMs(source) {
         var idb = require('idb');
         var dbPromise = idb.open('newsAPI', 2);
         return dbPromise.then(function (db) {
             var tx = db.transaction('newsAPI').objectStore('newsAPI').index('by-source');
-            return tx.getAll().then(function(message){
+            return tx.getAll(source).then(function(message){
                 //console.log(message);
                 return message;
             });
@@ -366,9 +366,10 @@
 
                 return fetch(fetchRequest).then(function (response) {
                     if (fetchRequest.url.startsWith('http://localhost:3000/api/') && response.status==404) {
-                        console.log("handling");
-                        return idbMs().then(function (tt) {
-                            return new Response(JSON.stringify(tt));
+                        var url = fetchRequest.url;
+                        var source = url.slice(url.lastIndexOf('/') + 1);
+                        return idbMs(source).then(function (news) {
+                            return new Response(JSON.stringify(news));
                             //console.log(kk);
                         });
                     } 

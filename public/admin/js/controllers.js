@@ -323,14 +323,15 @@
             var store = upgradeDb.createObjectStore('newsAPI', {
                 keyPath: 'publishedAt'
             });
-            store.createIndex('by-source', 'source.name');
+            store.createIndex('by-source', 'source.id');
+            //store.createIndex('by-country', )
         });
     }
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function(){
         navigator.serviceWorker.register('/sw2.js').then(function(registration){
-          console.log('Registration Successful with scope', registration.scope);
+          //console.log('Registration Successful with scope', registration.scope);
  
         }, function(err){
           console.log('Registration Failed', err);
@@ -346,25 +347,25 @@
     });
 
     adminApp.controller('AllPostsCtrl', function ($scope, postList) {
-        console.log(postList);
+        //console.log(postList);
         var idb = require('idb');
         var dbPromise = openDatabase();
         dbPromise.then(function (db) {
             if (!db) return;
-
             var tx = db.transaction('newsAPI', 'readwrite');
             var store = tx.objectStore('newsAPI');
             postList.forEach(function (message) {
                 store.put(message);
             });
-            //limit store to 40
+            
+            //limit store to 4000
             store.index('by-source').openCursor(null, "prev").then(function (cursor) {
-                return cursor.advance(40);
+                return cursor.advance(4000);
             }).then(function deleteRest(cursor) {
                 if (!cursor) return;
                 cursor.delete();
                 return cursor.continue().then(deleteRest);
-            });
+            }); 
         })
 	    $scope.posts = postList;
 	    $scope.activePost = false;
