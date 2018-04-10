@@ -314,15 +314,9 @@
 },{}],2:[function(require,module,exports){
     var CACHE_NAME = "newsAPI_cache_v2";
     var idb = require('idb');
-    var urlsToCache=[
-	    '/admin/css/main.css',
-        '/admin/templates/allPosts.html',
-        '/admin/templates/nav.html',
-	    '/admin/js/searchbox.js',
-        '/common/modules/posts.js',
-        '/admin/js/app.js',
-        '/admin/dashboard',
-        '/admin/js/controllers.js',
+    var urlsToCache = [
+        '/admin/css/main.css',
+        '/admin/js/searchbox.js',
         'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
@@ -340,10 +334,18 @@
 	    );
     });
     function idbMs(source) {
+        //source = source || 0;
+
         var idb = require('idb');
         var dbPromise = idb.open('newsAPI', 2);
         return dbPromise.then(function (db) {
             var tx = db.transaction('newsAPI').objectStore('newsAPI').index('by-source');
+            if (source == undefined) {
+                return tx.getAll().then(function (message) {
+                    //console.log(message);
+                    return message;
+                });
+            }
             return tx.getAll(source).then(function(message){
                 //console.log(message);
                 return message;
@@ -365,11 +367,24 @@
                 
 
                 return fetch(fetchRequest).then(function (response) {
-                    if (fetchRequest.url.startsWith('http://localhost:3000/api/') && response.status == 404) {
+                    //check if client is requesting for sources
+                    if (fetchRequest.url.startsWith('http://localhost:3000/api/sources') && response.status == 404) {
                         //alert("serving offline");
+                        //console.log(fetchRequest.url);
                         var url = fetchRequest.url;
                         var source = url.slice(url.lastIndexOf('/') + 1);
                         return idbMs(source).then(function (news) {
+                            return new Response(JSON.stringify(news));
+                            //console.log(kk);
+
+                        });
+                    } 
+                    if (fetchRequest.url.startsWith('http://localhost:3000/api/posts') && response.status == 404) {
+                        //alert("serving offline");
+                        console.log(fetchRequest.url);
+                        //var url = fetchRequest.url;
+                        //var source = url.slice(url.lastIndexOf('/') + 1);
+                        return idbMs().then(function (news) {
                             return new Response(JSON.stringify(news));
                             //console.log(kk);
 

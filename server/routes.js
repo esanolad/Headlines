@@ -11,16 +11,17 @@ module.exports = function(app, passport){
 
 	// API routes
 	require('./api/posts')(apiRouter);
-	
-	router.get('/admin/dashboard/:countryCode', function(req, res){
-		res.render('admin/dashboard', {countryCode: req.params.countryCode});
-	});
-	
-	router.get('/admin/dashboard', function(req, res){
-		res.render('admin/dashboard'); 
-	});
+
     router.get('/', function (req, res) {
         res.render('dashboard');
+    });
+    /*
+    router.get('/admin/dashboard/:countryCode', function (req, res) {
+        res.render('admin/dashboard', { countryCode: req.params.countryCode });
+    });
+
+    router.get('/admin/dashboard', function (req, res) {
+        res.render('admin/dashboard');
     });
 	router.get('/admin/sources', function(req, res){
 		res.render('admin/dashboard', {sources: req.params.source});
@@ -30,7 +31,7 @@ module.exports = function(app, passport){
 	}); 
 	router.get('/admin/js/sw/index.js', function(req, res){
 		res.render('admin/js/sw/index.js');
-	}); 
+	}); */
 	app.use(function(req, res, next){
 		res.status(404);
 
@@ -39,13 +40,3 @@ module.exports = function(app, passport){
 	});
 	
 };
-/*
-function isAdmin(req, res, next){
-	if(req.isAuthenticated() && req.user.email === 'lado'){
-		console.log('cool you are an admin, carry on your way');
-		next();
-	} else {
-		console.log('You are not an admin');
-		res.redirect('/admin');
-	}
-} */
