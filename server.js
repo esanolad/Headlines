@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 // ROUTES
-require('./server/routes')(app); //,passport
+require('./server/routes')(app); 
 
 // Start server
 app.listen(envConfig.port, function(){

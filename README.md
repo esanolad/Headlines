@@ -28,6 +28,6 @@ HEadlines
 		Users can create lists (e.g. favourites) and group articles in these lists.
 
 ************** INSTALLING	*****************************
- run npm install
- node server.js
+ npm install
+ npm run start
  go to https://localhost:3000/
