@@ -315,8 +315,15 @@
     var CACHE_NAME = "newsAPI_cache_v2";
     var idb = require('idb');
     var urlsToCache = [
+        '/',
+        '/common/modules/posts.js',
         '/admin/css/main.css',
         '/admin/js/searchbox.js',
+        '/admin/js/lib/markdown.js',
+        '/admin/js/controllers.js',
+        '/admin/js/app.js',
+        '/admin/templates/nav.html',
+        '/admin/templates/allPosts.html',
         'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
@@ -366,14 +373,14 @@
 
     self.addEventListener('fetch', function (event) {
         //console.log(event.request);
-        //console.log(event.request.url);
+        console.log(event.request.url);
         event.respondWith(
             //new Response("Hello world")
         
             caches.match(event.request).then(function (response) {
                 //serve from cache
                 if (response) {
-                    //console.log('fetching from cache: ', response.url);
+                    console.log('fetching from cache: ', response.url);
                     return response;
                 }
 
@@ -388,7 +395,7 @@
                     //check if client is requesting for sources
                     
                     //console.log(fetchRequest.url);
-
+                    //CHECK IF THE SERVER CANNOT CONNECT TO NEWSAPI
                     if (fetchRequest.url.startsWith('http://localhost:3000/api/sources') && response.status == 404) {
                         var url = fetchRequest.url;
                         var source = url.slice(url.lastIndexOf('/') + 1);
@@ -398,6 +405,43 @@
                         });
                     } 
                     if (fetchRequest.url.startsWith('http://localhost:3000/api/posts') && response.status == 404) {
+                        
+                        console.log(fetchRequest.url);
+                        
+                        return idbMs().then(function (news) {
+                            return new Response(JSON.stringify(news));
+                      
+                        });
+                    }  
+
+                    if (fetchRequest.url=='http://localhost:3000/api/favourite/'){
+
+                    //fetch data from favorite store
+                    //console.log('handle');
+                      return favorite().then(function (news) {
+                          return new Response(JSON.stringify(news));
+                      });
+
+                    } 
+
+                    var responseToCache = response.clone();
+
+                    caches.open(CACHE_NAME).then(function (cache) {
+                        //cache.put(event.request, responseToCache);
+                    })
+                    //console.log(responseToCache);
+                    return response;
+                }).catch(function (err){
+                    //NOT CONNECTED TO SERVER
+                    if (fetchRequest.url.startsWith('http://localhost:3000/api/sources')) {
+                        var url = fetchRequest.url;
+                        var source = url.slice(url.lastIndexOf('/') + 1);
+                        return idbMs(source).then(function (news) {
+                            return new Response(JSON.stringify(news));
+                        
+                        });
+                    } 
+                    if (fetchRequest.url.startsWith('http://localhost:3000/api/posts')) {
                         
                         console.log(fetchRequest.url);
                         
@@ -417,13 +461,6 @@
 
                     } 
 
-                    var responseToCache = response.clone();
-
-                    caches.open(CACHE_NAME).then(function (cache) {
-                        //cache.put(event.request, responseToCache);
-                    })
-                    //console.log(responseToCache);
-                    return response;
                 });
             }) 
         ) 

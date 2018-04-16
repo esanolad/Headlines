@@ -13,12 +13,14 @@ HEadlines
 
 	* Favourites list are saved and served from the Index DB
 
-	* If NEWSAPI is offiline, request that are source-based that are in Index DB are served from the DB
+	* If APP is offiline, request that are source-based that are in Index DB are served from the DB
 
 	* Because NewsAPI does not return "country" in its JSON, if the offline request is country based, all data from Index DB are served.
 
 
 	* The favourite button saves particular news to the favourite store in the NewsAPI Index DB 
+
+	* Also if the App is online but server cannot reach NEWSAPI, request that are source-based that are in Index DB are served from the DB
 
 	********** FRONT END FEATURES ************
 		Users can view top headlines based on country (filters)

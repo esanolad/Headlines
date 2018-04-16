@@ -334,7 +334,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function(){
         navigator.serviceWorker.register('/sw2.js').then(function(registration){
-          //console.log('Registration Successful with scope', registration.scope);
+          console.log('Registration Successful with scope', registration.scope);
  
         }, function(err){
           console.log('Registration Failed', err);

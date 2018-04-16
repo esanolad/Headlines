@@ -9,14 +9,14 @@ postsModule.service('Posts', function($http){
 			});
 		},
 		country: function(countryCode){
-			var link= '/api/posts/' + countryCode;
+			var link= 'api/posts/' + countryCode;
             return $http.get(link).then(function (postList) {
                 //console.log(postList.data);
 				return postList.data;
 			});
 		},
 		sources: function(source){
-			var link= '/api/sources/' + source;
+			var link= 'api/sources/' + source;
 			return $http.get(link).then(function(postList){
 				return postList.data;
 			});

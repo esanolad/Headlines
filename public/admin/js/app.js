@@ -11,7 +11,7 @@ adminApp.config(function($stateProvider, $urlRouterProvider){
 
 	$stateProvider
 		.state('post', {
-			url: '/dashboard/:countryCode',
+			url: 'dashboard/:countryCode',
 			templateUrl: '/admin/templates/allPosts.html',
 			resolve: {
 				postList: function(Posts, $stateParams){
@@ -23,7 +23,7 @@ adminApp.config(function($stateProvider, $urlRouterProvider){
 			controller: 'AllPostsCtrl'
 		})
 		.state('sources', {
-			url: '/sources/:source',
+			url: 'sources/:source',
 			templateUrl: '/admin/templates/allPosts.html',
 			resolve: {
 				postList: function(Posts, $stateParams){
